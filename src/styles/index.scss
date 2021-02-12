@@ -1,7 +1,6 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
 /* 
-
     You can write your own styles here...
     
     
@@ -9,5 +8,19 @@
     other sylesheets into your bunde as well, e.j:
     
     import 'relative/path/to/stylesheet.scss';
-
 */
+body {
+     background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,109,121,1) 35%, rgba(0,212,255,1) 100%); 
+
+}
+
+.list-group-item {
+
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,112,121,0.5993931019673495) 13%, rgba(0,212,255,1) 100%);
+}
+
+li {
+    color: greenyellow;
+}
