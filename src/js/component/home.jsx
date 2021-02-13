@@ -1,16 +1,42 @@
 import React from "react";
 import shortid from "shortid";
 
-const GETdata = () => {
-	fetch("https://assets.breatheco.de/apis/fake/todos/user/alesanchezr", {
-		method: "GET",
-		body: JSON.stringify(),
+//#region  GetData
+const getMyData = () => {
+	fetch("https://assets.breatheco.de/apis/fake/todos/user/jvm4Geeks")
+		.then(response => response.json())
+		.then(data => console.log(data));
+};
+getMyData();
+//#endregion
+
+//#region  insertData
+const insertData = () => {
+	fetch("https://assets.breatheco.de/apis/fake/todos/user/jvm4Geeks", {
+		method: "post",
+		headers: {
+			Accept: "application/json, text/plain, */*",
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify([])
+	})
+		.then(res => res.json())
+		.then(res => console.log(res));
+};
+/*insertData();*/
+//#endregion
+
+//#region  PUTData
+const PUTdata = () => {
+	fetch("https://assets.breatheco.de/apis/fake/todos/user/jvm4Geeks", {
+		method: "PUT",
+		body: JSON.stringify([{ label: "arajo", done: false }]),
 		headers: {
 			"Content-Type": "application/json"
 		}
 	})
 		.then(resp => {
-			console.log(resp.ok); // will be true if the response is successfull
+			console.log(resp.ok); // will be true if the response is successful
 			console.log(resp.status); // the status code = 200 or code = 400 etc.
 			console.log(resp.text()); // will try return the exact result as string
 			return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
@@ -24,32 +50,9 @@ const GETdata = () => {
 			console.log(error);
 		});
 };
+/*PUTData();*/
+//#endregion
 
-const POSTuser = () => 
-{
-    fetch('https://assets.breatheco.de/apis/fake/todos/user/jvm4Geeks', {
-      method: "POST",
-      body: JSON.stringify([]),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(resp => {
-        console.log(resp.ok); // will be true if the response is successfull
-        console.log(resp.status); // the status code = 200 or code = 400 etc.
-        console.log(resp.text()); // will try return the exact result as string
-        return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
-    })
-    .then(data => {
-        //here is were your code should start after the fetch finishes
-        console.log(data); //this will print on the console the exact object received from the server
-    })
-    .catch(error => {
-        //error handling
-        console.log(error);
-    });
-};
-POSTuser();
 export function Home() {
 	const [tarea, setTarea] = React.useState("");
 	const [arrayTareas, setArrayTareas] = React.useState([]);
